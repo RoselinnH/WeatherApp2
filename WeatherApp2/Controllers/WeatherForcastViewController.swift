@@ -9,6 +9,18 @@
 import Foundation
 import UIKit
 
+
 class WeatherForcastViewController: UIViewController{
     
+    var webServices = Webservices()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        webServices.downloadCurrentWeather {
+            
+        }
+    }
 }
+    
+    
+
