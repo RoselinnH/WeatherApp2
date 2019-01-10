@@ -20,6 +20,9 @@
 		EA35F39521E405FC00ED5309 /* WeatherForcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35F39421E405FC00ED5309 /* WeatherForcastViewController.swift */; };
 		EA35F39721E4062400ED5309 /* AddCityForcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35F39621E4062400ED5309 /* AddCityForcastViewController.swift */; };
 		EAF5539E21E54F2800B981E0 /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF5539D21E54F2800B981E0 /* WebServices.swift */; };
+		EAF553A021E679AC00B981E0 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF5539F21E679AC00B981E0 /* Cities.swift */; };
+		EAF553A221E6B44800B981E0 /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF553A121E6B44800B981E0 /* config.swift */; };
+		EAF553A521E6C0B900B981E0 /* WeatherForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF553A421E6C0B900B981E0 /* WeatherForecastViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		EA35F39421E405FC00ED5309 /* WeatherForcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForcastViewController.swift; sourceTree = "<group>"; };
 		EA35F39621E4062400ED5309 /* AddCityForcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityForcastViewController.swift; sourceTree = "<group>"; };
 		EAF5539D21E54F2800B981E0 /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
+		EAF5539F21E679AC00B981E0 /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
+		EAF553A121E6B44800B981E0 /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
+		EAF553A421E6C0B900B981E0 /* WeatherForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastViewModel.swift; sourceTree = "<group>"; };
 		EF93F67445496C699D26B922 /* Pods_WeatherApp2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB0356218F56DC02D1B5140 /* Pods_WeatherApp2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF1581BFFDF091C6A80F04D /* Pods-WeatherApp2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp2.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApp2/Pods-WeatherApp2.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 		EA35F36321E4029C00ED5309 /* WeatherApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				EAF553A321E6C04E00B981E0 /* ViewModel */,
 				EAF5539B21E54EB600B981E0 /* Services */,
 				EA35F39321E4032A00ED5309 /* Controllers */,
 				EA35F36421E4029C00ED5309 /* AppDelegate.swift */,
@@ -151,6 +158,8 @@
 				EA35F36B21E4029D00ED5309 /* Assets.xcassets */,
 				EA35F36D21E4029D00ED5309 /* LaunchScreen.storyboard */,
 				EA35F37021E4029D00ED5309 /* Info.plist */,
+				EAF5539F21E679AC00B981E0 /* Cities.swift */,
+				EAF553A121E6B44800B981E0 /* config.swift */,
 			);
 			path = WeatherApp2;
 			sourceTree = "<group>";
@@ -188,6 +197,14 @@
 				EAF5539D21E54F2800B981E0 /* WebServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EAF553A321E6C04E00B981E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAF553A421E6C0B900B981E0 /* WeatherForecastViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +444,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA35F39721E4062400ED5309 /* AddCityForcastViewController.swift in Sources */,
+				EAF553A021E679AC00B981E0 /* Cities.swift in Sources */,
+				EAF553A221E6B44800B981E0 /* config.swift in Sources */,
 				EAF5539E21E54F2800B981E0 /* WebServices.swift in Sources */,
+				EAF553A521E6C0B900B981E0 /* WeatherForecastViewModel.swift in Sources */,
 				EA35F36721E4029C00ED5309 /* ViewController.swift in Sources */,
 				EA35F36521E4029C00ED5309 /* AppDelegate.swift in Sources */,
 				EA35F39521E405FC00ED5309 /* WeatherForcastViewController.swift in Sources */,

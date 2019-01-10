@@ -11,33 +11,36 @@ import Alamofire
 import SwiftyJSON
 import OHHTTPStubs
 import XCGLogger
-// URL = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=f24610eb6630896b3064b1988e2fd4c2"
+// URL = "http://api.openweathermap.org/data/2.5/weather?q=Montreal&appid=f24610eb6630896b3064b1988e2fd4c2&units=metric"
+// iconURL=http://openweathermap.org/img/w/10d.png
 
-let API_URL = "http://api.openweathermap.org/data/2.5/weather?"
-let LATTITUDE = "lat=35"
-let LONGITUDE = "&lon=139"
-let APP_ID="&appid="
-let APP_KEY = "f24610eb6630896b3064b1988e2fd4c2"
-let METRIC_UNITS = "&units=metric"
 
-let CURRENT_WEATHER_URL = "\(API_URL)\(LATTITUDE)\(LONGITUDE)\(APP_ID)\(APP_KEY)\(METRIC_UNITS)"
+//let CURRENT_WEATHER_URL = "\(API_URL)\(APP_ID)\(APP_KEY)\(METRIC_UNITS)"
 
-//type alias for the compleation handler that will tell the function when the downloads complete
-typealias DownloadComplete = () ->()
+
+struct CurrentWeatherResource<T> {
+    let url: URL
+    let parse: (Data) -> T?
+}
 
 final class Webservices{
     
-    func downloadCurrentWeather (compleated: DownloadComplete){
-        let currentWeatherURL = URL(string: CURRENT_WEATHER_URL)!
+    func downloadCurrentWeather<T> ( resource: CurrentWeatherResource<T>, completed: @escaping (T?) -> Void){
         //saving data as a JSON formated dictionary
-        Alamofire.request(currentWeatherURL).responseJSON{ response in
-            let result = response.result
-            print(CURRENT_WEATHER_URL)
+        Alamofire.request(resource.url).responseJSON{ response in
+            guard response.result.isSuccess else {
+            print("Error while fetching weather")
+                
+                return
+            }
             print(response)
+
+                      //  print(resource.parse)
             
-        }
-        compleated()
-    
+        }.resume()
+        //not sure about this completion handler
+        //completed(nil)
     }
+    
     
 }
