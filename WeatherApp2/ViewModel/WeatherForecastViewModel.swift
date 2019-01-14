@@ -10,22 +10,40 @@ import Foundation
 
 
 
-struct WeatherViewModel: Decodable {
-    //it is being returned meaning no key
-    let name: String //city
-
-    //main
-    let main: TempViewModel
-    let weather: IconViewModel
-    let sys: CountryViewModel
+struct WeatherViewModel {
     
-    private enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case main = "main"
-        case weather = "weather"
-        case sys = "sys"
-    }
+    var temp: String?
+    var temp_max: String?
+    var temp_min: String?
+    
+//    //it is being returned meaning no key
+//    let name: String //city
+//
+//    //main
+//    let main: TempViewModel
+//    let weather: IconViewModel
+//    let sys: CountryViewModel
+//
+//    private enum CodingKeys: String, CodingKey {
+//        case name = "name"
+//        case main = "main"
+//        case weather = "weather"
+//        case sys = "sys"
+//    }
 
+}
+
+extension WeatherViewModel{
+    init?(json: Dictionary<String, Any>){
+        guard let dict = json as? Dictionary<String, Any> else{
+            return nil
+        }
+        let temp = dict["temp"] as! String
+        let temp_max = dict["temp_max"] as! String
+        let temp_min = dict["temp_min"] as! String
+        
+        self.init(temp: temp, temp_max: temp_max, temp_min: temp_min)
+    }
 }
 
 struct IconViewModel: Decodable {

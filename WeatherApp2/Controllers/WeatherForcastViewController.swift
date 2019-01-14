@@ -11,7 +11,7 @@ import UIKit
 
 
 
-class WeatherForcastViewController: UIViewController, AddWeatherDelegate{
+class WeatherForcastViewController: UIViewController{
     let API_URL="http://openweathermap.org/img/w/"
     var webServices = Webservices()
     
@@ -20,11 +20,11 @@ class WeatherForcastViewController: UIViewController, AddWeatherDelegate{
         
     }
     
-    func addWeatherDidSave(viewModel vm: WeatherViewModel) {
-        print("I'm in")
-        print(vm.name)
-        print(vm.main.temp)
-    }
+//    func addWeatherDidSave(viewModel vm: WeatherViewModel) {
+//        print("I'm in")
+//        print(vm.name)
+//        print(vm.main.temp)
+//    }
     
     //This code will run in the Navigation Controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,7 +35,7 @@ class WeatherForcastViewController: UIViewController, AddWeatherDelegate{
             fatalError("AddCityForcastController not found")
         }
         
-        addCityForcastVC.delegate = self
+       
         
     }
 }

@@ -16,6 +16,9 @@ protocol AddWeatherDelegate {
 
 class AddCityForcastController: UIViewController{
     
+    let client = Webservices.shared
+    
+    
     var delegate: AddWeatherDelegate?
     
     let API_URL = "https://api.openweathermap.org/data/2.5/weather?q"
@@ -29,31 +32,52 @@ class AddCityForcastController: UIViewController{
     
     @IBAction func searchCityButtonPressed(_ sender: UIButton, forEvent event: UIEvent) {
         print("--------->Click")
+
         if let city = cityTextField.text{
             print("--------->1")
-            let currentWeatherURL = URL(string: "\(API_URL)=\(city)\(APP_ID)\(APP_KEY)\(METRIC_UNITS)")!
-            print("--------->2")
-            let currentWeatherResoure = CurrentWeatherResource<WeatherViewModel>(url: currentWeatherURL){ data in
-                //turning the data into an instance
-                let weatherVM = try? JSONDecoder().decode(WeatherViewModel.self, from: data)
-                 print("--------->3")
-                print("weatherVM= \(weatherVM!)")
-                
-                return weatherVM
-            }
-            print("--------->4")
-                
-            Webservices().downloadCurrentWeather(resource: currentWeatherResoure) { [weak self] result in
-                
-                if let weatherVM = result {
-                    
-                    //if unwrap then delegate
-                    if let delegate = self?.delegate{
-                        delegate.addWeatherDidSave(viewModel: weatherVM)
-                        //self?.dismiss(animated: true, completion: nil)
-                    }
+            let currentWeatherURL = "\(API_URL)=\(city)\(APP_ID)\(APP_KEY)\(METRIC_UNITS)"
+            
+            client.downloadWeather(urlStr: currentWeatherURL) { (content, error) in
+                if error == nil{
+                    print("------>###############")
+                    print(WeatherViewModel.self)
+                }else{
+                    print(error!.localizedDescription)
                 }
             }
+            
+//            client.downloadWeather(urlStr: currentWeatherURL) { (content, error) in
+//                if error == nil{
+//                    
+//                    print(content!)
+//                }else{
+//                    print(error!.localizedDescription)
+//                }
+//                
+//            }
+            
+//            print("--------->2")
+////            let currentWeatherResoure = CurrentWeatherResource<WeatherViewModel>(url: currentWeatherURL){ data in
+//                //turning the data into an instance
+//                let weatherVM = try? JSONDecoder().decode(WeatherViewModel.self, from: data)
+//                 print("--------->3")
+//                print("weatherVM= \(weatherVM!)")
+//                
+//                return weatherVM
+//            }
+            print("--------->4")
+                
+//            Webservices().downloadCurrentWeather(resource: currentWeatherResoure) { [weak self] result in
+//
+//                if let weatherVM = result {
+//
+//                    //if unwrap then delegate
+//                    if let delegate = self?.delegate{
+//                        delegate.addWeatherDidSave(viewModel: weatherVM)
+//                        //self?.dismiss(animated: true, completion: nil)
+//                    }
+//                }
+//            }
         }
     }
     
